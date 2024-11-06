@@ -16,9 +16,9 @@ const canvasWidth = 1024;
 const canvasHeight = 576;
 
 function preload() {
-	floorImage = loadImage('/img/floor.png')
-	backgroundImage = loadImage('/img/background.png')
-	cloudsImage = loadImage('/img/clouds.png')
+	floorImage = loadImage('img/floor.png')
+	backgroundImage = loadImage('img/background.png')
+	cloudsImage = loadImage('img/clouds.png')
 
 }
 
@@ -71,17 +71,17 @@ function draw() {
 
 function scrollCanvas() {
 
-	if (player.sprite.x > 250) {
+	if (player.sprite.x > 300) {
 		scrollOffset -= 3;
 		backgroundOffset -= 1;
 		cloudOffset -= 2;
-	} else if (player.sprite.x < 150) {
+	} else if (player.sprite.x < 100) {
 		scrollOffset += 3;
 		backgroundOffset += 1;
 		cloudOffset += 2;
 	}
 
-	scrollOffset = constrain(scrollOffset, 0, 100);
+	scrollOffset = constrain(scrollOffset, -canvasWidth, canvasWidth);
 	backgroundOffset = constrain(backgroundOffset, -canvasWidth, 0);
 	cloudOffset = constrain(cloudOffset, -canvasWidth, 0);
 }
@@ -99,30 +99,32 @@ class Player {
 
 		//moving 
 		if (kb.pressing('left')) {
-			this.sprite.vel.x = -5;
+			this.sprite.vel.x = -3;
 		} else if (kb.pressing('right')) {
-			this.sprite.vel.x = 5;
+			this.sprite.vel.x = 3;
 		} else {
 			this.sprite.vel.x = 0;
 		}
 
 		//keeps player from going off canvas
-		if (this.sprite.x < 25) {
-			this.sprite.x = 25;
-		} else if (this.sprite.x > canvasWidth - 25) {
-			this.sprite.x = canvasWidth - 25;
+		if (this.sprite.x < 50) {
+			this.sprite.x = 50;
+			this.sprite.vel.x = 0;
+		} else if (this.sprite.x > canvasWidth - 50) {
+			this.sprite.x = canvasWidth - 50;
+			this.sprite.vel.x = 0;
 		}
 
 
 
-
+		// checks if player is touching floor 
 		if (this.sprite.y + this.sprite.diameter / 2 >= floor.y) {
 
 			this.sprite.y = floor.y - this.sprite.diameter / 2;
 			this.sprite.vel.y = 0;
 		} else {
 
-			this.sprite.y += this.sprite.vel.y;
+			this.sprite.y += world.gravity.y;
 		}
 
 	}
@@ -141,12 +143,13 @@ class Floor {
 
 	update() {
 
-		this.x = canvasWidth / 2 + scrollOffset; // Center the floor on the canvas with scrolling
-		this.y = canvasHeight - this.height; // Position the floor just above the bottom
+		//adjusts position of the floor with scrolling element.
+		let startX = this.x + scrollOffset;
 
-		// Draw the floor image at the correct position
-		image(floorImage, this.x - this.width / 2, this.y, this.width, this.height); // Center the image based on its width
+		for (let i = -1; i <= 1; i++) {
+			image(floorImage, startX + i * this.width, this.y, this.width, this.height);
 	}
+}
 }
 
 class GenericObjects {
