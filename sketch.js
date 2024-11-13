@@ -8,18 +8,24 @@ let floor;
 let floorImage;
 let backgroundImage;
 let cloudsImage;
+let fronthouseImage;
 
-let scrollOffset = 0;
-let backgroundOffset = 0;
-let cloudOffset = 0;
-const canvasWidth = 1024;
+
+const canvasWidth = 800;
 const canvasHeight = 576;
+const houseWidth = 500;
+const houseHeight = 500;
+const houseDoorX = canvasWidth - houseWidth + 450;
+const doorWidth = 50;
+
+let gameState = 0; //0: front of house
 
 function preload() {
 	floorImage = loadImage('img/floor.png')
 	backgroundImage = loadImage('img/background.png')
 	cloudsImage = loadImage('img/clouds.png')
-
+	fronthouseImage = loadImage('img/fronthouse.png')
+       
 }
 
 
@@ -58,32 +64,39 @@ function draw() {
 
 	background(0);
 
-
+	if (gameState === 0) {
 	backgroundObj.draw();
-
 	player.update();
-	scrollCanvas();
 	floor.update();
-
 	cloudsObj.draw();
+	drawHouse();
+	} else if (gameState === 1){
+		displayNewCanvas();
+}
 
 }
 
-function scrollCanvas() {
+function drawHouse(){
 
-	if (player.sprite.x > 300) {
-		scrollOffset -= 3;
-		backgroundOffset -= 1;
-		cloudOffset -= 2;
-	} else if (player.sprite.x < 100) {
-		scrollOffset += 3;
-		backgroundOffset += 1;
-		cloudOffset += 2;
-	}
+	let houseX = canvasWidth - houseWidth;
+	let houseY = 30; // where the house should appear
+	//let houseX = 500;
+	
 
-	scrollOffset = constrain(scrollOffset, -canvasWidth, canvasWidth);
-	backgroundOffset = constrain(backgroundOffset, -canvasWidth, 0);
-	cloudOffset = constrain(cloudOffset, -canvasWidth, 0);
+	if (fronthouseImage) {
+        image(fronthouseImage, houseX, houseY, houseWidth, houseHeight); 
+    } else {
+        console.log("fronthouseImage not loaded");
+
+}
+}
+
+function displayNewCanvas (){
+	background (0);
+	fill (255);
+	textSize(32);
+	textAlign(CENTER, CENTER);
+	text("New Scene", canvasWidth/ 2, canvasHeight / 2);
 }
 
 
@@ -92,26 +105,26 @@ class Player {
 
 		this.sprite = new Sprite(x, y, size, size);
 		this.sprite.diameter = size;
-		this.sprite.color = 'pink';
+		this.sprite.color = 'black';
 	}
 
 	update() {
 
 		//moving 
 		if (kb.pressing('left')) {
-			this.sprite.vel.x = -3;
+			this.sprite.vel.x = -5;
 		} else if (kb.pressing('right')) {
-			this.sprite.vel.x = 3;
+			this.sprite.vel.x = 5;
 		} else {
 			this.sprite.vel.x = 0;
 		}
 
-		//keeps player from going off canvas
+		//restrains player from going too far off canvas
 		if (this.sprite.x < 50) {
-			this.sprite.x = 50;
-			this.sprite.vel.x = 0;
-		} else if (this.sprite.x > canvasWidth - 50) {
-			this.sprite.x = canvasWidth - 50;
+            this.sprite.x = 50;
+            this.sprite.vel.x = 0;
+		} else if (this.sprite.x > houseDoorX - 50) {
+			this.sprite.x = houseDoorX - 50;
 			this.sprite.vel.x = 0;
 		}
 
@@ -128,7 +141,14 @@ class Player {
 		}
 
 	}
+
+	checkDoor(){ //checks to see if player is in door area
+		if (this.sprite.x >= houseDoorX && this.sprite.x <= houseDoorX + doorWidth){
+			gameState = 1;
+		}
+	}
 }
+
 
 
 
@@ -144,7 +164,7 @@ class Floor {
 	update() {
 
 		//adjusts position of the floor with scrolling element.
-		let startX = this.x + scrollOffset;
+		let startX = this.x ;
 
 		for (let i = -1; i <= 1; i++) {
 			image(floorImage, startX + i * this.width, this.y, this.width, this.height);
@@ -162,24 +182,15 @@ class GenericObjects {
 
 	draw() {
 
-
 		if (this.image === cloudsImage) {
-			const cloudHeight = 525; // Set the desired height for clouds
-
-
-
-
-			//draw image at 0 	
-			image(this.image, cloudOffset, this.position.y, canvasWidth * 10, cloudHeight);
-			//draw a second image for tiling 
-			image(this.image, cloudOffset + canvasWidth * 10, this.position.y, canvasWidth * 10, cloudHeight);
-		} else {
-			//draw image at 0 
-			image(this.image, backgroundOffset, this.position.y, canvasWidth, canvasHeight);
-
-			image(this.image, backgroundOffset + canvasWidth, this.position.y, canvasWidth, canvasHeight);
-		}
-	}
+            const cloudHeight = 525;
+            image(this.image, 0, this.position.y, canvasWidth * 10, cloudHeight);
+            image(this.image, canvasWidth * 10, this.position.y, canvasWidth * 10, cloudHeight);
+        } else {
+            image(this.image, 0, this.position.y, canvasWidth, canvasHeight);
+            image(this.image, canvasWidth, this.position.y, canvasWidth, canvasHeight);
+        }
+    }
 }
 
 
@@ -188,10 +199,3 @@ class GenericObjects {
 
 
 
-
-
-//function animate(){
-//player.update();
-
-
-//animate()
