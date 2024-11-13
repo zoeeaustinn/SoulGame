@@ -128,22 +128,26 @@ class Player {
 			this.sprite.vel.x = 0;
 		}
 
-
+		console.log("Player X Position:" + this.sprite.x);
+		this.checkDoor();
 
 		// checks if player is touching floor 
 		if (this.sprite.y + this.sprite.diameter / 2 >= floor.y) {
-
 			this.sprite.y = floor.y - this.sprite.diameter / 2;
 			this.sprite.vel.y = 0;
 		} else {
-
 			this.sprite.y += world.gravity.y;
 		}
 
 	}
 
-	checkDoor(){ //checks to see if player is in door area
-		if (this.sprite.x >= houseDoorX && this.sprite.x <= houseDoorX + doorWidth){
+	checkDoor(){
+		 //checks to see if player is in door area
+		 let doorBuffer = 50;
+		 console.log("Checking Door...");
+
+		if (this.sprite.x >= houseDoorX - doorBuffer && this.sprite.x <= houseDoorX + doorWidth + doorBuffer){
+			console.log("player reached the door! Changing gameState.");
 			gameState = 1;
 		}
 	}
