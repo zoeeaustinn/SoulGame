@@ -10,7 +10,7 @@ let backgroundImage;
 let cloudsImage;
 let fronthouseImage;
 let livingroomImage;
-
+let windowClicked = false; // rob
 
 
 let livingroom2Image;
@@ -92,7 +92,8 @@ function setup() {
 function draw() {
 
 	background(0);
-	console.log("Current gameState:", gameState);
+	console.log("Current gameState:" + gameState + " x:"+mouseX + " y:" + mouseY);
+
 
 
 	if (gameState === 0) {
@@ -103,6 +104,11 @@ function draw() {
 		floor.update();
 		cloudsObj.draw();
 		drawHouse();
+
+		// rob
+		if (windowClicked) {
+			rect(691,209, 70,40);
+		}
 
 		if (player.sprite.x + player.sprite.diameter / 2 >= houseDoorX - doorWidth) {
 			gameState = 1; // Switch to Living Room state
@@ -267,7 +273,7 @@ class Player {
 
 		this.sprite = new Sprite(x, y, size, size);
 		this.sprite.diameter = size;
-		this.sprite.color = 'black';
+		this.sprite.color = 'blue';
 		this.positionReset = false;
 	}
 
@@ -364,7 +370,15 @@ class GenericObjects {
 }
 
 
-
+function mouseClicked() {
+	// rob
+	if (gameState == 0) {
+		if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
+			console.log("someone clicked the window on the front of the house!")
+			windowClicked = true;
+		}
+	}
+}
 
 
 
