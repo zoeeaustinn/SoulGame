@@ -9,22 +9,43 @@ let floorImage;
 let backgroundImage;
 let cloudsImage;
 let fronthouseImage;
+let livingroomImage;
+
+
+
+let livingroom2Image;
+
+let kitchenImage;
+let kitchen2Image;
+//let bedroomImage;
+//let endingImage;
+
 
 
 const canvasWidth = 800;
 const canvasHeight = 576;
-const houseWidth = 500;
+const houseWidth = 600;
 const houseHeight = 500;
-const houseDoorX = canvasWidth - houseWidth + 450;
+const houseDoorX = canvasWidth - houseWidth + 550; // 550 changes position of housedoorX
 const doorWidth = 50;
 
-let gameState = 0; //0: front of house
+let gameState = 0; //0: front of house 1: Living Room 2: Living room 2 3:kitchen 4: kitchen 2 5: bedroom
+// 6: bedroom 2 7:ending
 
 function preload() {
 	floorImage = loadImage('img/floor.png')
 	backgroundImage = loadImage('img/background.png')
 	cloudsImage = loadImage('img/clouds.png')
 	fronthouseImage = loadImage('img/fronthouse.png')
+	livingroomImage = loadImage('img/livingroom.png')
+
+
+	livingroom2Image = loadImage('img/livingroom2.png')
+	kitchenImage = loadImage('img/Kitchen1.png');
+	kitchen2Image = loadImage('img/Kitchen2.png');
+	
+	//bedroomImage = loadImage('img/bedroom.png');
+	//endingImage = loadImage('img/ending.png');
        
 }
 
@@ -41,8 +62,8 @@ function setup() {
 
 
 
-	player = new Player(250, 0, 50);
-	floor = new Floor(canvasWidth / 2, canvasHeight - 50, canvasWidth, 50);
+	player = new Player(50, 0, 50);
+	floor = new Floor(canvasWidth / 2, canvasHeight - 10, canvasWidth, 50);
 
 	backgroundObj = new GenericObjects({
 		x: 0,
@@ -58,46 +79,187 @@ function setup() {
 
 	});
 
+
+
+
+
+
+
 }
+
+
 
 function draw() {
 
 	background(0);
+	console.log("Current gameState:", gameState);
+
 
 	if (gameState === 0) {
-	backgroundObj.draw();
-	player.update();
-	floor.update();
-	cloudsObj.draw();
-	drawHouse();
-	} else if (gameState === 1){
-		displayNewCanvas();
-}
 
+		//front of house
+		backgroundObj.draw();
+		player.update();
+		floor.update();
+		cloudsObj.draw();
+		drawHouse();
+
+		if (player.sprite.x + player.sprite.diameter / 2 >= houseDoorX - doorWidth) {
+			gameState = 1; // Switch to Living Room state
+			player.resetPosition(); // Reset player position when transitioning
+		  }
+
+	} else if (gameState === 1){
+
+		//living room part 1
+		displayLivingRoom();
+		player.update();
+		
+
+
+		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
+			gameState = 2; // Switch to Living Room part 2
+			player.resetPosition(); // Reset player position when transitioning
+		
+		  }
+	
+
+
+	
+
+	}else if (gameState === 2){
+
+		//living room part 2
+		displayLivingRoom2();
+		player.update();
+		
+		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
+			gameState = 3; // Switch to Living Room part 2
+			player.resetPosition(); // Reset player position when transitioning
+		  }
+
+
+	} else if (gameState === 3){
+
+		displayKitchen();
+		player.update();
+
+		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
+			gameState = 4; // Switch to Living Room part 2
+			player.resetPosition(); // Reset player position when transitioning
+		  }
+		
+	}else if (gameState === 4){
+
+		displayKitchen2();
+		player.update();
+
+
+		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
+			gameState = 5; // Switch to Living Room part 2
+			player.resetPosition(); // Reset player position when transitioning
+		  }
+
+
+
+
+
+
+
+
+		//displayBedroom();
+		//player.update();
+
+		//if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
+		//	gameState = 5; // Switch to Living Room part 2
+		//	player.resetPosition(); // Reset player position when transitioning
+		//  }
+
+	//}else if (gameState === 5){
+	//	displayEnding();
+	}
 }
 
 function drawHouse(){
 
 	let houseX = canvasWidth - houseWidth;
-	let houseY = 30; // where the house should appear
+	const houseY = canvasHeight - 5 - houseHeight; // where the house should appear
 	//let houseX = 500;
 	
 
 	if (fronthouseImage) {
-        image(fronthouseImage, houseX, houseY, houseWidth, houseHeight); 
-    } else {
+		image(fronthouseImage, canvasWidth - houseWidth, houseY, houseWidth, houseHeight);    
+	 } else {
         console.log("fronthouseImage not loaded");
 
 }
 }
 
-function displayNewCanvas (){
+function displayLivingRoom (){
 	background (0);
-	fill (255);
-	textSize(32);
-	textAlign(CENTER, CENTER);
-	text("New Scene", canvasWidth/ 2, canvasHeight / 2);
+
+	if (livingroomImage){
+		image(livingroomImage, 0, 0, canvasWidth, canvasHeight);
+	}else{
+		console.log("living room image not loaded.")
+	}
+
+	player.update();
 }
+
+
+function displayLivingRoom2 (){
+	background (0);
+
+	if (livingroom2Image){
+		//image(VHS1Image, 0, 0, canvasWidth, canvasHeight);
+		image(livingroom2Image, 0, 0, canvasWidth, canvasHeight);
+		
+	}else{
+		console.log("living room 2 image not loaded.")
+	}
+
+
+	
+}
+
+function displayKitchen (){
+	
+if (kitchenImage){
+	image(kitchenImage, 0, 0, canvasWidth, canvasHeight);
+
+}else{
+	console.log("Kitchen Image 1 not loading.");
+}
+}
+
+function displayKitchen2 (){
+	
+	if (kitchen2Image){
+		image(kitchen2Image, 0, 0, canvasWidth, canvasHeight);
+	
+	}else{
+		console.log("Kitchen Image 2 not loading.");
+	}
+	}
+
+
+
+
+//function displayBedroom (){
+	//background (0);
+	///fill (255);
+	//textSize(32);
+	//textAlign(CENTER, CENTER);
+	////text("Bedroom", canvasWidth/ 2, canvasHeight / 2);
+///}
+//function displayEnding (){
+//	background (0);
+	//fill (255);
+	//textSize(32);
+	//textAlign(CENTER, CENTER);
+	///text("The End", canvasWidth/ 2, canvasHeight / 2);
+//}
 
 
 class Player {
@@ -106,6 +268,7 @@ class Player {
 		this.sprite = new Sprite(x, y, size, size);
 		this.sprite.diameter = size;
 		this.sprite.color = 'black';
+		this.positionReset = false;
 	}
 
 	update() {
@@ -123,25 +286,24 @@ class Player {
 		if (this.sprite.x < 50) {
             this.sprite.x = 50;
             this.sprite.vel.x = 0;
-		} else if (this.sprite.x > houseDoorX - 50) {
-			this.sprite.x = houseDoorX - 50;
-			this.sprite.vel.x = 0;
 		}
 
-		console.log("Player X Position:" + this.sprite.x);
-		this.checkDoor();
+		
 
-		// checks if player is touching floor 
 		if (this.sprite.y + this.sprite.diameter / 2 >= floor.y) {
-			this.sprite.y = floor.y - this.sprite.diameter / 2;
-			this.sprite.vel.y = 0;
+			this.sprite.y = floor.y - this.sprite.diameter / 2; // Ensure player stays above floor
+			this.sprite.vel.y = 0; // Stop downward velocity when touching floor
 		} else {
-			this.sprite.y += world.gravity.y;
+			this.sprite.y += world.gravity.y; // Apply gravity
 		}
 
+		if (gameState ===1){
+		this.checkDoor();
+		}
 	}
 
 	checkDoor(){
+
 		 //checks to see if player is in door area
 		 let doorBuffer = 50;
 		 console.log("Checking Door...");
@@ -151,8 +313,12 @@ class Player {
 			gameState = 1;
 		}
 	}
+	resetPosition() {
+        this.sprite.x = 50; 
+		this.positionReset = true;
 }
 
+}
 
 
 
