@@ -17,8 +17,9 @@ let livingroom2Image;
 
 let kitchenImage;
 let kitchen2Image;
-//let bedroomImage;
-//let endingImage;
+let bedroomImage;
+let bedroom2Image;
+let endingImage;
 
 
 
@@ -33,19 +34,24 @@ let gameState = 0; //0: front of house 1: Living Room 2: Living room 2 3:kitchen
 // 6: bedroom 2 7:ending
 
 function preload() {
+
 	floorImage = loadImage('img/floor.png')
 	backgroundImage = loadImage('img/background.png')
 	cloudsImage = loadImage('img/clouds.png')
 	fronthouseImage = loadImage('img/fronthouse.png')
 	livingroomImage = loadImage('img/livingroom.png')
-
-
 	livingroom2Image = loadImage('img/livingroom2.png')
+	livingroom1offImage = loadImage('img.livingroom1off.png')
+	livingroom2offImage = loadImage('img.livingroom2off.png')
 	kitchenImage = loadImage('img/Kitchen1.png');
 	kitchen2Image = loadImage('img/Kitchen2.png');
-	
-	//bedroomImage = loadImage('img/bedroom.png');
-	//endingImage = loadImage('img/ending.png');
+	kitchen1offImage = loadImage('img/kitchen1off.png');
+	kitchen2offImage = loadImage('img/kitchen2off.png');
+	bedroomImage = loadImage('img/bedroom.png');
+	bedroom2Image = loadImage('img/bedroom2.png');
+	bedroom1offImage = loadImage ('img/bedroom1off.png');
+	bedroom2offImage = loadImage ('img/bedroom2off.png');
+	endingImage = loadImage('img/ending.png');
        
 }
 
@@ -130,9 +136,6 @@ function draw() {
 		  }
 	
 
-
-	
-
 	}else if (gameState === 2){
 
 		//living room part 2
@@ -140,49 +143,67 @@ function draw() {
 		player.update();
 		
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
-			gameState = 3; // Switch to Living Room part 2
+			gameState = 3; // Switch to Kitchen
 			player.resetPosition(); // Reset player position when transitioning
 		  }
 
 
-	} else if (gameState === 3){
+	}else if (gameState === 3){
 
+		//kitchen
 		displayKitchen();
 		player.update();
 
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
-			gameState = 4; // Switch to Living Room part 2
+			gameState = 4; // Switch to Kitchen part 2
 			player.resetPosition(); // Reset player position when transitioning
 		  }
 		
 	}else if (gameState === 4){
 
+		//kitchen part 2
 		displayKitchen2();
 		player.update();
 
 
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
-			gameState = 5; // Switch to Living Room part 2
+			gameState = 5; // Switch to bedroom
 			player.resetPosition(); // Reset player position when transitioning
 		  }
 
+	}else if (gameState === 5){
+	
+		//bedroom
+		displayBedroom();
+		player.update();
+
+		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
+			gameState = 6; // Switch to bedroom part 2
+			player.resetPosition(); // Reset player position when transitioning
+		  }
+
+	}else if (gameState === 6){
+	
+		//bedroom part 2
+		displayBedroom2();
+		player.update();
+
+		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
+			gameState = 7; // Switch to ending
+			player.resetPosition(); // Reset player position when transitioning
+		 }
+
+	}else if (gameState === 7){
+		displayEnding();
+		player.update();
+		
 
 
-
-
-
-
-
-		//displayBedroom();
-		//player.update();
-
-		//if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
-		//	gameState = 5; // Switch to Living Room part 2
-		//	player.resetPosition(); // Reset player position when transitioning
-		//  }
-
-	//}else if (gameState === 5){
-	//	displayEnding();
+		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
+			gameState = 2; // Switch to Living Room part 2
+			player.resetPosition(); // Reset player position when transitioning
+		
+		  }
 	}
 }
 
@@ -213,12 +234,10 @@ function displayLivingRoom (){
 	player.update();
 }
 
-
 function displayLivingRoom2 (){
 	background (0);
 
 	if (livingroom2Image){
-		//image(VHS1Image, 0, 0, canvasWidth, canvasHeight);
 		image(livingroom2Image, 0, 0, canvasWidth, canvasHeight);
 		
 	}else{
@@ -249,23 +268,36 @@ function displayKitchen2 (){
 	}
 	}
 
+function displayBedroom(){
+
+	if (bedroomImage){
+		image(bedroomImage, 0, 0, canvasWidth, canvasHeight);
+	}else{
+		console.log('Bedroom Image not loading');
+	}
+	}
+	
+function displayBedroom2(){
+
+	if (bedroom2Image){
+		image(bedroom2Image, 0, 0, canvasWidth, canvasHeight);
+	}else{
+		console.log('Bedroom Image 2 not loading');
+	}
+	}
+
+function displayEnding(){
+
+	if (endingImage){
+		image(endingImage, 0, 0, canvasWidth, canvasHeight);
+	}else{
+		console.log('Ending Image not loading');
+	}
+	}
 
 
 
-//function displayBedroom (){
-	//background (0);
-	///fill (255);
-	//textSize(32);
-	//textAlign(CENTER, CENTER);
-	////text("Bedroom", canvasWidth/ 2, canvasHeight / 2);
-///}
-//function displayEnding (){
-//	background (0);
-	//fill (255);
-	//textSize(32);
-	//textAlign(CENTER, CENTER);
-	///text("The End", canvasWidth/ 2, canvasHeight / 2);
-//}
+
 
 
 class Player {
@@ -349,7 +381,8 @@ class Floor {
 }
 
 class GenericObjects {
-	constructor({ x, y, image }) {
+
+		constructor({ x, y, image }) {
 		this.position = { x, y };
 		this.image = image;
 		this.width = image.width;
@@ -378,6 +411,46 @@ function mouseClicked() {
 			windowClicked = true;
 		}
 	}
+
+	if (gameState == 1) {
+		//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
+			//console.log("someone clicked the window on the front of the house!")
+			//windowClicked = true;
+		}
+	if (gameState == 2) {
+		//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
+			//console.log("someone clicked the window on the front of the house!")
+			//windowClicked = true;
+		}
+	if (gameState == 3) {
+			//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
+					//console.log("someone clicked the window on the front of the house!")
+					//windowClicked = true;
+		}
+	if (gameState == 4) {
+			//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
+					//console.log("someone clicked the window on the front of the house!")
+					//windowClicked = true;
+		}
+	if (gameState == 5) {
+			//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
+					//console.log("someone clicked the window on the front of the house!")
+					//windowClicked = true;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
