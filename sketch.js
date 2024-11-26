@@ -11,6 +11,14 @@ let cloudsImage;
 let fronthouseImage;
 let livingroomImage;
 let windowClicked = false; // rob
+let lampClicked = false;
+let umbrellaClicked = false;
+
+let floralClicked = false;
+let selfieClicked = false;
+let babyClicked = false;
+let beachClicked = false;
+let balletClicked = false;
 
 
 let livingroom2Image;
@@ -41,13 +49,21 @@ function preload() {
 	fronthouseImage = loadImage('img/fronthouse.png')
 	livingroomImage = loadImage('img/livingroom.png')
 	livingroom2Image = loadImage('img/livingroom2.png')
-	livingroom1offImage = loadImage('img.livingroom1off.png')
-	livingroom2offImage = loadImage('img.livingroom2off.png')
+	livingroom1offImage = loadImage('img/livingroom1off.png')
+	livingroom2offImage = loadImage('img/livingroom2off.png')
+	umbrellaImage = loadImage('img/umbrella.png')
+	umbrellaoffImage = loadImage('img/umbrellaoff.png')
+	floralImage = loadImage('img/floralhighlight.png')
+	selfieImage = loadImage('img/selfiehighlight.png')
+	babyImage = loadImage ('img/babyhighlight.png')
+	beachImage = loadImage ('img/beachhighlight.png')
+	balletImage = loadImage ('img/ballethighlight.png')
+
 	kitchenImage = loadImage('img/Kitchen1.png');
 	kitchen2Image = loadImage('img/Kitchen2.png');
 	kitchen1offImage = loadImage('img/kitchen1off.png');
 	kitchen2offImage = loadImage('img/kitchen2off.png');
-	bedroomImage = loadImage('img/bedroom.png');
+	bedroomImage = loadImage('img/bedroom1.png');
 	bedroom2Image = loadImage('img/bedroom2.png');
 	bedroom1offImage = loadImage ('img/bedroom1off.png');
 	bedroom2offImage = loadImage ('img/bedroom2off.png');
@@ -101,7 +117,6 @@ function draw() {
 	console.log("Current gameState:" + gameState + " x:"+mouseX + " y:" + mouseY);
 
 
-
 	if (gameState === 0) {
 
 		//front of house
@@ -128,20 +143,106 @@ function draw() {
 		player.update();
 		
 
+		if (lampClicked && umbrellaClicked) {
+			// if both umbrella and lamp are clicked it shows lampoff & umbrella shifted
+			if (umbrellaoffImage) {
+				image(umbrellaoffImage, 0, 0, canvasWidth, canvasHeight);
+			}
+		} else if (floralClicked) {
+			// if floral picture is clicked, it highlights
+			if (floralImage) {
+				image(floralImage, 0, 0, canvasWidth, canvasHeight);
+			}
 
+		} else if (selfieClicked) {
+			// if selfie picture is clicked, it highlights
+			if (selfieImage) {
+				image(selfieImage, 0, 0, canvasWidth, canvasHeight);
+			}
+		} else if (babyClicked) {
+			// if baby picture is clicked, it highlights
+			if (babyImage) {
+				image(babyImage, 0, 0, canvasWidth, canvasHeight);
+			}
+
+		} else if (beachClicked) {
+			// if beach picture is clicked, it highlights
+			if (beachImage) {
+				image(beachImage, 0, 0, canvasWidth, canvasHeight);
+			}
+		} else if (balletClicked) {
+			// if ballet picture is clicked, it highlights
+			if (balletImage) {
+				image(balletImage, 0, 0, canvasWidth, canvasHeight);
+			}
+		} else if (lampClicked) {
+			// if lamp is clicked, lights will turn off
+			if (livingroom1offImage) {
+				image(livingroom1offImage, 0, 0, canvasWidth, canvasHeight);
+			}
+		} else if (umbrellaClicked) {
+			// if umbrella is clicked, umbrella shifts to other side
+			if (umbrellaImage) {
+				image(umbrellaImage, 0, 0, canvasWidth, canvasHeight);
+				//displayText("this is an umbrella!");
+			}
+			//displayText("The umbrella has been clicked", 10, 10, 24);
+
+		} else {
+			// base living room 
+			if (livingroomImage) {
+				image(livingroomImage, 0, 0, canvasWidth, canvasHeight);
+			}
+		}
+
+	
+
+
+
+		//registers users location to move on to next case 
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
 			gameState = 2; // Switch to Living Room part 2
 			player.resetPosition(); // Reset player position when transitioning
 		
-		  }
-	
+		} 
 
-	}else if (gameState === 2){
+
+
+	} else if (gameState === 2){
 
 		//living room part 2
 		displayLivingRoom2();
 		player.update();
 		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
 			gameState = 3; // Switch to Kitchen
 			player.resetPosition(); // Reset player position when transitioning
@@ -204,8 +305,12 @@ function draw() {
 			player.resetPosition(); // Reset player position when transitioning
 		
 		  }
+		}
+
+	
 	}
-}
+
+
 
 function drawHouse(){
 
@@ -404,7 +509,7 @@ class GenericObjects {
 
 
 function mouseClicked() {
-	// rob
+	
 	if (gameState == 0) {
 		if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
 			console.log("someone clicked the window on the front of the house!")
@@ -413,45 +518,100 @@ function mouseClicked() {
 	}
 
 	if (gameState == 1) {
-		//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
-			//console.log("someone clicked the window on the front of the house!")
-			//windowClicked = true;
+
+		//lamp in living room 
+		if (mouseX > 381 && mouseX < 455 && mouseY > 301 && mouseY < 419) {
+			console.log("someone clicked on the lamp!")
+			lampClicked = !lampClicked;
 		}
+		//umbrella in living room
+		if (mouseX > 210 && mouseX < 283 && mouseY > 357 && mouseY < 567) {
+			console.log("someone clicked on the umbrella!")
+			umbrellaClicked = !umbrellaClicked;
+		}
+		//floral picture 
+		if (mouseX > 203 && mouseX < 343 && mouseY > 251 && mouseY < 343) {
+			console.log("someone clicked on the floral picture!")
+			floralClicked = !floralClicked;f
+		}
+		//selfie picture 
+		if (mouseX > 326 && mouseX < 423 && mouseY > 107 && mouseY < 216) {
+			console.log("someone clicked on the selfie photo!")
+			selfieClicked = !selfieClicked;
+		}
+		//baby picture 
+		if (mouseX > 410 && mouseX < 525 && mouseY > 255 && mouseY < 322) {
+			console.log("someone clicked on the baby photo!")
+			babyClicked = !babyClicked;
+		}
+		//beach picture 
+		if (mouseX > 537 && mouseX < 680 && mouseY > 82 && mouseY < 251) {
+			console.log("someone clicked on the beach picture!")
+			beachClicked = !beachClicked;
+		}
+		//ballet picture 
+		if (mouseX > 702 && mouseX < 779 && mouseY > 233 && mouseY < 332) {
+			console.log("someone clicked on the umbrella!")
+			balletClicked = !balletClicked;
+		}
+		//drawer
+		if (mouseX > 391 && mouseX < 441 && mouseY > 437 && mouseY < 472) {
+			console.log("someone clicked on the drawer!")
+		}
+
+
+
 	if (gameState == 2) {
+
+
+
+
 		//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
 			//console.log("someone clicked the window on the front of the house!")
 			//windowClicked = true;
-		}
-	if (gameState == 3) {
+		//}
+
+
+
+
+
+
+
+
+
+
+	//if (gameState == 3) {
+			//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
+					//console.log("someone clicked the window on the front of the house!")
+					//windowClicked = true;
+		//}
+	//if (gameState == 4) {
+			//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
+					//console.log("someone clicked the window on the front of the house!")
+					//windowClicked = true;
+		//}
+	//if (gameState == 5) {
 			//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
 					//console.log("someone clicked the window on the front of the house!")
 					//windowClicked = true;
 		}
-	if (gameState == 4) {
-			//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
-					//console.log("someone clicked the window on the front of the house!")
-					//windowClicked = true;
-		}
-	if (gameState == 5) {
-			//if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
-					//console.log("someone clicked the window on the front of the house!")
-					//windowClicked = true;
-		}
+	}
 
 
+}
 
+function isMouseOver(){
 
-
-
-
-
-
+	if ()
 
 
 
 
 
 }
+
+
+
 
 
 
