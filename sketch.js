@@ -186,7 +186,7 @@ function draw() {
 		image(carImage, -150, 330, 400, 300);
 		text("Use key arrows to move left or right,", 15, 25);
 		text("and the mouse to click on objects to explore more.", 15, 55);
-		textSize(20,20);
+		textSize(20);
 		fill(0);
 	
 		// rob
@@ -195,10 +195,10 @@ function draw() {
 		}
 		if (player.sprite.x > 150){
 			text("Hello? hello? nobody is picking up....", 20, 200);
-			textSize(20, 20);
+			textSize(20);
 		} if (player.sprite.x > 550){
 			text("I guess no one is home right now.", 20, 220);
-			textSize(20, 20);
+			textSize(20);
 		}
 
 
@@ -216,7 +216,7 @@ function draw() {
 
 		if (drawerClicked) {
 			text("Just a drawer, with some pens, and some stitching needles...", 25, 60);
-			textSize(20,20);
+			textSize(20);
 			fill(255);
 		
 		}else if (lampClicked && umbrellaClicked) {
@@ -229,7 +229,7 @@ function draw() {
 			if (floralImage) {
 				image(floralImage, 0, 0, canvasWidth, canvasHeight);
 				text("Sunflower and roses are mom's favorite...", 25, 60);
-				textSize(20,20);
+				textSize(20);
 				fill(255);
 			}
 
@@ -239,7 +239,7 @@ function draw() {
 				image(selfieImage, 0, 0, canvasWidth, canvasHeight);
 				text("I remember this, me and mom took a girl's day.", 20, 65);
 				text("she even picked me up early from school.", 20, 85);
-				textSize(20,20);
+				textSize(20);
 				fill(255);
 			}
 		} else if (babyClicked) {
@@ -247,7 +247,7 @@ function draw() {
 			if (babyImage) {
 				image(babyImage, 0, 0, canvasWidth, canvasHeight);
 				text("Awe, I remember that photo. That was my first time swimming.", 25, 60);
-				textSize(20,20);
+				textSize(20);
 				fill(255);
 				
 			}
@@ -258,7 +258,7 @@ function draw() {
 				image(beachImage, 0, 0, canvasWidth, canvasHeight);
 				text("The first time at the beach was so much fun, ", 30, 65);
 				text("I remember we spent hours collecting seashells.", 30, 85);
-				textSize(20,20);
+				textSize(20);
 				fill(255);
 			}
 		} else if (balletClicked) {
@@ -267,7 +267,7 @@ function draw() {
 				image(balletImage, 0, 0, canvasWidth, canvasHeight);
 				text("My first ballet solo...I remember being nervous,", 30, 66);
 				text("but mom and dad were so proud.", 30, 85);
-				textSize(20,20);
+				textSize(20);
 				fill(255);
 			}
 		} else if (lampClicked) {
@@ -321,7 +321,7 @@ function draw() {
                 image(button2Image, 0, 0, canvasWidth, canvasHeight);
 				text("I remember coming to the living room, when I didn't feel good", 30, 25);
 				text("or couldn't sleep, and this show was always on in the mornings.", 30, 45);
-				textSize(20,20);
+				textSize(20);
 				fill(255);
             }
 		}
@@ -330,7 +330,7 @@ function draw() {
             if (button3Image) {
                 image(button3Image, 0, 0, canvasWidth, canvasHeight);
 				text("Awee my favorite cartoon...The Flintstones", 30, 25);
-				textSize(20,20);
+				textSize(20);
 				fill(255);
 				
             }
@@ -340,83 +340,77 @@ function draw() {
             if (button4Image) {
                 image(button4Image, 0, 0, canvasWidth, canvasHeight);
 				text("This is what I watched Spongebob on alot too...", 30, 25);
-				textSize(20,20);
+				textSize(20);
 				fill(255);
 				
             }
 		}
 
 		if (vhs1Clicked) {
-			text("vhs tape of The Little Mermaid...", 30, 25);
-			textSize(20,20);
-			fill(255);
-		}
-
-		if (vhs5Clicked) {
-			text("a vhs tape of the movie Shrek.... ", 30, 25);
-			textSize(20,20);
+			text("VHS tapes of The Little Mermaid, Toy Story...", 30, 25);
+			textSize(20);
 			fill(255);
 		}
 
 		if (vhs11Clicked) {
-			text("vhs tape of the movie Cars...", 30, 25);
-			textSize(20,20);
+			text("More VHS tapes of Cars, Pocahontas ...", 30, 25);
+			textSize(20);
 			fill(255);
 		}
 
 		if (pearlplantClicked) {
 			text("Mom always tends to her plants, like they are her children too.",30, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(255);
 				
 		}
 
 		if (book1Clicked) {
 			text("The Help...The Bible...Crossword puzzles....", 30, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(255);
 		}
 
 		if (book2Clicked) {
-			text("books", 25, 25);
-			textSize(20,20);
+			text("Diary of a wimpy kid...Goosebumps...Junie B. Jones", 25, 25);
+			textSize(20);
 			fill(255);
 		}
 
 		if (book3Clicked) {
-			text("The Shining,word search, and some random magazines...", 30, 25);
-			textSize(20,20);
+			text("The Shining...word search...and some random magazines...", 30, 25);
+			textSize(20);
 			fill(255);
 		}
 
 		if (ball8Clicked) {
 			text("My favorite 8 ball! I was obssessed with letting,", 30, 25);
-			text("this make decisions for me", 30, 45);
-			textSize(20,20);
+			text("this make decisions for me.", 30, 45);
+			textSize(20);
 			fill(255);
 		}
 
 		if (board1Clicked) {
 			text("Baby albums, and school photos...", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(255);
 		}
 
 		if (board2Clicked) {
 			text("Monopoly....Scrabble...", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(255);
 		}
 
 		if (NESClicked) {
 			text("Mom kept her NES, and all her games. My favorite game was Dr. Mario,", 25, 25);
-			text("we use to play that all night... ", 25, 45);
-			textSize(20,20);
+			text("we use to play all night... ", 25, 45);
+			textSize(20);
 			fill(255);		}
 
 		if (vidgameClicked) {
 			text("Dvds of Polar Express...Monsters Inc...The Chronicles of Narnia...", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(255);
 		}
 
@@ -438,33 +432,37 @@ function draw() {
 
 
 		if (calendarClicked) {
-			rect(627,225, 70,40);
+			text("I loved flipping the calendar pages each month when I was little, always decorating in markers and stickers...");
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (letterClicked) {
-			rect(707,404, 70,40);
+			text("...Congratulations on making the Honor Roll this semester!...", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (rainbowClicked) {
-			text("This was the rainbow I drew for dad on St. Patricks day, I thought it was good luck.", 25, 25);
+			text("This was the rainbow I drew in kindergarten...", 25, 25);
 			textSize(20,20);
 			fill(0);
 		}
 
 		if (stickfigureClicked) {
-			text("This was my best drawing of Grampa...", 25, 25);
+			text("haha, I remember making this doodle of grampa...", 25, 25);
 			textSize(20,20);
 			fill(0);
 		}
 
 		if (flowerdrawClicked) {
-			text("I gave this drawing to Mom, and she has always kept it,", 25, 25);
+			text("...I made this drawing for Mom, and she has always kept it.", 25, 25);
 			textSize(20,20);
 			fill(0);
 		}
 
 		if (paintingonwallClicked) {
-			text("...I don't know where this painting is from.", 25, 25);
+			text("...I don't really know where this painting is from..", 25, 25);
 			textSize(20,20);
 			fill(0);
 		}
@@ -474,10 +472,6 @@ function draw() {
 			textSize(20,20);
 			fill(0);
 		}
-
-
-
-
 
 
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
@@ -496,10 +490,16 @@ function draw() {
 
 		if (microwaveImage) {
 			image(microwaveImage, 0, 0, canvasWidth, canvasHeight);
+			text("*beep*", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 	}
 		if (cookiejarClicked) {
-			rect(345,295, 70,40);
+			text("Grandma always collected cookie jars, and it has become family tradition now.", 25, 25);
+			text("Her cookies were the best", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (faucetClicked) {
@@ -510,19 +510,27 @@ function draw() {
 	}
 
 		if (drawer1Clicked) {
-			rect(42,383, 70,40);
+			text("..Just the silverware drawer...", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (drawer2Clicked) {
-			rect(258,386, 70,40);
+			text("Everyone has a junk drawer....right?", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (cabinet1Clicked) {
-			rect(66,88, 70,40);
+			text("...Cups and water bottles in here.", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (cabinet2Clicked) {
-			rect(172,89, 70,40);
+			text("...Bowls and plates in here.", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 
@@ -829,6 +837,7 @@ function mouseClicked() {
 	if (gameState == 0) {
 		if (mouseX > 691 && mouseX < 734 && mouseY > 209 && mouseY < 280) {
 			console.log("someone clicked the window on the front of the house!");
+			resetAllToggles();
 			windowClicked = true;
 		}
 	}
@@ -838,41 +847,49 @@ function mouseClicked() {
 		//lamp in living room 
 		if (mouseX > 381 && mouseX < 455 && mouseY > 301 && mouseY < 419) {
 			console.log("someone clicked on the lamp!");
+			resetAllToggles();
 			lampClicked = !lampClicked;
 		}
 		//umbrella in living room
 		if (mouseX > 210 && mouseX < 283 && mouseY > 357 && mouseY < 567) {
 			console.log("someone clicked on the umbrella!");
+			resetAllToggles();
 			umbrellaClicked = !umbrellaClicked;
 		}
 		//floral picture 
 		if (mouseX > 203 && mouseX < 343 && mouseY > 251 && mouseY < 343) {
 			console.log("someone clicked on the floral picture!");
+			resetAllToggles();
 			floralClicked = !floralClicked;
 		}
 		//selfie picture 
 		if (mouseX > 326 && mouseX < 423 && mouseY > 107 && mouseY < 216) {
 			console.log("someone clicked on the selfie photo!");
+			resetAllToggles();
 			selfieClicked = !selfieClicked;
 		}
 		//baby picture 
 		if (mouseX > 410 && mouseX < 525 && mouseY > 255 && mouseY < 322) {
 			console.log("someone clicked on the baby photo!");
+			resetAllToggles();
 			babyClicked = !babyClicked;
 		}
 		//beach picture 
 		if (mouseX > 537 && mouseX < 680 && mouseY > 82 && mouseY < 251) {
 			console.log("someone clicked on the beach picture!");
+			resetAllToggles();
 			beachClicked = !beachClicked;
 		}
 		//ballet picture 
 		if (mouseX > 702 && mouseX < 779 && mouseY > 233 && mouseY < 332) {
 			console.log("someone clicked on the umbrella!");
+			resetAllToggles();
 			balletClicked = !balletClicked;
 		}
 		//drawer
 		if (mouseX > 391 && mouseX < 441 && mouseY > 437 && mouseY < 472) {
 			console.log("someone clicked on the drawer!");
+			resetAllToggles();
 			drawerClicked = !drawerClicked;
 		}
 
@@ -884,111 +901,129 @@ function mouseClicked() {
 			//button 1
         if (mouseX > 423 && mouseX < 431 && mouseY > 350 && mouseY < 360) {
             console.log("someone clicked on button 1!");
+			resetAllToggles();
             button1Clicked = !button1Clicked;
         }
 		    //button 2
 		if (mouseX > 423 && mouseX < 432 && mouseY > 369 && mouseY < 379) {
 			console.log("someone clicked on button 2!");
+			resetAllToggles();
 			button2Clicked = !button2Clicked;
 		}
 			//button 3
 		if (mouseX > 422 && mouseX < 432 && mouseY > 387 && mouseY < 396) {
 			console.log("someone clicked on button 3!");
+			resetAllToggles();
 			button3Clicked = !button3Clicked;
 		}
 			//button 4
 		if (mouseX > 419 && mouseX < 431 && mouseY > 405 && mouseY < 414) {
 			console.log("someone clicked on button 4");
+			resetAllToggles();
 			button4Clicked = !button4Clicked;
 		}
 			//VHS 1
-        if (mouseX > 255 && mouseX < 265 && mouseY > 469 && mouseY < 506) {
+        if (mouseX > 255 && mouseX < 302 && mouseY > 469 && mouseY < 506) {
             console.log("someone clicked on VHS1!");
+			resetAllToggles();
             vhs1Clicked = !vhs1Clicked;
         }
 		    //VHS 5
-		if (mouseX > 297 && mouseX < 304 && mouseY > 473 && mouseY < 504) {
+		if (mouseX > 310 && mouseX < 350 && mouseY > 475 && mouseY < 506) {
 			console.log("someone clicked on VHS5!");
+			rresetAllToggles();
 			vhs5Clicked = !vhs5Clicked;
 		}
 			//VHS 11
-		if (mouseX > 344 && mouseX < 356 && mouseY > 473 && mouseY < 504) {
+		if (mouseX > 360 && mouseX < 388 && mouseY > 473 && mouseY < 506) {
 			console.log("someone clicked on VHS11!");
+			resetAllToggles();
 			vhs11Clicked = !vhs11Clicked;
 		}
 			//Plant on shelf
 		if (mouseX > 547 && mouseX < 588 && mouseY > 328 && mouseY < 373) {
 			console.log("someone clicked on the plant on the shelf");
+			resetAllToggles();
 			pearlplantClicked = !pearlplantClicked;
 		}
 			//books 1 on shelf green - pink
-        if (mouseX > 545 && mouseX < 689 && mouseY > 260 && mouseY < 299) {
+        if (mouseX > 545 && mouseX < 607 && mouseY > 260 && mouseY < 299) {
+			resetAllToggles();
             book1Clicked = !book1Clicked;
         }
 		    //books 2 on shelf grey - purple
 		if (mouseX > 611 && mouseX < 690 && mouseY > 251 && mouseY < 299) {
+			resetAllToggles();
 			book2Clicked = !book2Clicked;
 		}
 			//books 3 on the shelf light red - green 
 		if (mouseX > 693 && mouseX < 766 && mouseY > 256 && mouseY < 299) {
+			resetAllToggles();
 			book3Clicked = !book3Clicked;
 		}
 			//8 ball
 		if (mouseX > 664 && mouseX < 685 && mouseY > 341 && mouseY < 365) {
+			resetAllToggles();
 			ball8Clicked = !ball8Clicked;
 		}
 			//board games on the left
         if (mouseX > 544 && mouseX < 626 && mouseY > 450 && mouseY < 492) {
+			resetAllToggles();
             board1Clicked = !board1Clicked;
         }
 		    //board games on the right 
 		if (mouseX > 631 && mouseX < 705 && mouseY > 454 && mouseY < 489) {
+			resetAllToggles();
 			board2Clicked = !board2Clicked;
 		}
 			//NES under tv
 		if (mouseX > 260 && mouseX < 321 && mouseY > 527 && mouseY < 556) {
+			resetAllToggles();
 			NESClicked = !NESClicked;
 		}
 			//video games next to NES
 		if (mouseX > 336 && mouseX < 399 && mouseY > 523 && mouseY < 558) {
+			resetAllToggles();
 			vidgameClicked = !vidgameClicked;
 		}
 
 	}
 
-
-
-
-
-
 	if (gameState == 3) {
 
 			//Calendar
 		if (mouseX > 627 && mouseX < 739 && mouseY > 225 && mouseY < 310) {
+			resetAllToggles();
 			calendarClicked = !calendarClicked;
 		}
 			//letter on fridge
 		if (mouseX > 707 && mouseX < 743 && mouseY > 404 && mouseY < 447) {
+			resetAllToggles();
 			letterClicked = !letterClicked;
 		}
 			//rainbow drawing on fridge
         if (mouseX > 673 && mouseX < 695 && mouseY > 348 && mouseY < 371) {
+			resetAllToggles();
             rainbowClicked = !rainbowClicked;
         }
 		    //stick figure drawing on fridge
 		if (mouseX > 604 && mouseX < 634 && mouseY > 382 && mouseY < 406) {
+			resetAllToggles();
 			stickfigureClicked = !stickfigureClicked;
 		}
 			//flower drawing on fridge
 		if (mouseX > 634 && mouseX < 663 && mouseY > 445 && mouseY < 475) {
+			resetAllToggles();
 			flowerdrawClicked = !flowerdrawClicked;
 		}
 			//random painting on the wall
 		if (mouseX > 61 && mouseX < 215 && mouseY > 85 && mouseY < 303) {
+			resetAllToggles();
 			paintingonwallClicked = !paintingonwallClicked;
 		}
 			//to-do list
 		if (mouseX > 692 && mouseX < 720 && mouseY > 486 && mouseY < 523) {
+			resetAllToggles();
 			todoClicked = !todoClicked;
 		}
 	}
@@ -999,30 +1034,37 @@ function mouseClicked() {
 		
 			//microwave
 		if (mouseX > 40 && mouseX < 207 && mouseY > 281 && mouseY < 367) {
+			resetAllToggles();
 			microwaveClicked = !microwaveClicked;
 		}
 			//cookie jar
 		if (mouseX > 345 && mouseX < 393 && mouseY > 295 && mouseY < 364) {
+			resetAllToggles();
 			cookiejarClicked = !cookiejarClicked;
 		}
 			//faucet
         if (mouseX > 670 && mouseX < 695 && mouseY > 299 && mouseY < 346) {
+			resetAllToggles();
             faucetClicked = !faucetClicked;
         }
 		    //1st drawer
 		if (mouseX > 42 && mouseX < 234 && mouseY > 383 && mouseY < 434) {
+			resetAllToggles();
 			drawer1Clicked = !drawer1Clicked;
 		}
 			//2nd drawer
 		if (mouseX > 258 && mouseX < 480 && mouseY > 386 && mouseY < 437) {
+			resetAllToggles();
 			drawer2Clicked = !drawer2Clicked;
 		}
 			//1st cabinet
 		if (mouseX > 66 && mouseX < 154 && mouseY > 88 && mouseY < 243) {
+			resetAllToggles();
 			cabinet1Clicked = !cabinet1Clicked;
 		}
 			//2nd cabinet 
 		if (mouseX > 172 && mouseX < 263 && mouseY > 89 && mouseY < 244) {
+			resetAllToggles();
 			cabinet2Clicked = !cabinet2Clicked;
 		}
 	}
@@ -1031,38 +1073,47 @@ function mouseClicked() {
 
 			//room lamp
 		if (mouseX > 110 && mouseX < 165 && mouseY > 344 && mouseY < 442) {
+			resetAllToggles();
 			roomlampClicked = !roomlampClicked;
 		}
 			//tv 
         if (mouseX > 208 && mouseX < 389 && mouseY > 304 && mouseY < 439) {
+			resetAllToggles();
             tvClicked = !tvClicked;
         }
 		    //ds
 		if (mouseX > 425 && mouseX < 487 && mouseY > 408 && mouseY < 439) {
+			resetAllToggles();
 			dsClicked = !dsClicked;
 		}
 			//vhs row 1  
 		if (mouseX > 107 && mouseX < 161 && mouseY > 529 && mouseY < 560) {
+			resetAllToggles();
 			vhsrow1Clicked = !vhsrow1Clicked;
 		}
 			//vhs row 2 
 		if (mouseX > 167 && mouseX < 226 && mouseY > 529 && mouseY < 559) {
+			resetAllToggles();
 			vhsrow2Clicked = !vhsrow2Clicked;
 		}
 			//vhs row 3 
         if (mouseX > 231 && mouseX < 286 && mouseY > 528 && mouseY < 558) {
+			resetAllToggles();
             vhsrow3Clicked = !vhsrow3Clicked;
         }
 		    //radio
 		if (mouseX > 425 && mouseX < 485 && mouseY > 534 && mouseY < 556) {
+			resetAllToggles();
 			radioClicked = !radioClicked;
 		}
 			//book row 1 
 		if (mouseX > 309 && mouseX < 402 && mouseY > 466 && mouseY < 509) {
+			resetAllToggles();
 			bookrow1Clicked = !bookrow1Clicked;
 		}
 			//book row 2
 		if (mouseX > 410 && mouseX < 513 && mouseY > 478 && mouseY < 506) {
+			resetAllToggles();
 			bookrow2Clicked = !bookrow2Clicked;
 		}
 
@@ -1073,10 +1124,12 @@ function mouseClicked() {
 
 			//poster
 		if (mouseX > 238 && mouseX < 370 && mouseY > 119 && mouseY < 313) {
+			resetAllToggles();
 			posterClicked = !posterClicked;
 		}
 			//pillow
         if (mouseX > 432 && mouseX < 547 && mouseY > 373 && mouseY < 450) {
+			resetAllToggles();
             pillowClicked = !pillowClicked;
         }
 
@@ -1084,3 +1137,57 @@ function mouseClicked() {
 
 }
 }
+
+function resetAllToggles(){
+
+	windowClicked= false;
+	floralClicked = false;
+	selfieClicked = false;
+	babyClicked = false;
+	beachClicked = false;
+	balletClicked = false;
+	drawerClicked = false;
+	button1Clicked = false;
+	button2Clicked = false;
+	button3Clicked = false;
+	button4Clicked = false;
+	vhs1Clicked = false;
+	vhs5Clicked = false;
+	vhs11Clicked = false;
+	pearlplantClicked = false;
+	book1Clicked = false;
+	book2Clicked = false;
+	book3Clicked = false;
+	ball8Clicked = false;
+	board1Clicked = false;
+	board2Clicked = false;
+	NESClicked = false;
+	vidgameClicked = false;
+	calendarClicked = false;
+	letterClicked = false;
+	rainbowClicked = false;
+	stickfigureClicked = false;
+	flowerdrawClicked = false;
+	paintingonwallClicked = false;
+	todoClicked = false;
+	microwaveClicked = false;
+	cookiejarClicked = false;
+	faucetClicked = false;
+	drawer1Clicked = false;
+	drawer2Clicked = false;
+	cabinet1Clicked = false;
+	cabinet2Clicked = false;
+	tvClicked = false;
+	roomlampClicked = false;
+	dsClicked = false;
+	vhsrow1Clicked = false;
+	vhsrow2Clicked = false;
+	vhsrow3Clicked = false;
+	radioClicked = false;
+	bookrow1Clicked = false;
+	bookrow2Clicked = false;
+	posterClicked = false;
+	pillowClicked = false;
+
+}
+
