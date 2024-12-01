@@ -126,7 +126,8 @@ function preload() {
 	bedroom1offImage = loadImage ('img/bedroom1off.png');
 	bedroom2offImage = loadImage ('img/bedroom2off.png');
 	endingImage = loadImage('img/ending.png');
-       
+	movingrightImage = loadImage('img/movingright.png');
+	movingleftImage = loadImage('img/movingleft.png');
 }
 
 
@@ -432,44 +433,45 @@ function draw() {
 
 
 		if (calendarClicked) {
-			text("I loved flipping the calendar pages each month when I was little, always decorating in markers and stickers...");
-			textSize(20,20);
+			text("I loved flipping the calendar pages each month when I was little, ",25, 25);
+			text("always decorating in markers and stickers...",25, 45);
+			textSize(20);
 			fill(0);
 		}
 
 		if (letterClicked) {
 			text("...Congratulations on making the Honor Roll this semester!...", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
 		if (rainbowClicked) {
 			text("This was the rainbow I drew in kindergarten...", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
 		if (stickfigureClicked) {
 			text("haha, I remember making this doodle of grampa...", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
 		if (flowerdrawClicked) {
 			text("...I made this drawing for Mom, and she has always kept it.", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
 		if (paintingonwallClicked) {
 			text("...I don't really know where this painting is from..", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
 		if (todoClicked) {
 			text("Groceries List...milk,cheese,noodles,cream,juice...", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
@@ -491,14 +493,14 @@ function draw() {
 		if (microwaveImage) {
 			image(microwaveImage, 0, 0, canvasWidth, canvasHeight);
 			text("*beep*", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 	}
 		if (cookiejarClicked) {
 			text("Grandma always collected cookie jars, and it has become family tradition now.", 25, 25);
-			text("Her cookies were the best", 25, 25);
-			textSize(20,20);
+			text("Her cookies were the best", 25, 45);
+			textSize(20);
 			fill(0);
 		}
 
@@ -511,36 +513,33 @@ function draw() {
 
 		if (drawer1Clicked) {
 			text("..Just the silverware drawer...", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
 		if (drawer2Clicked) {
 			text("Everyone has a junk drawer....right?", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
 		if (cabinet1Clicked) {
 			text("...Cups and water bottles in here.", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
 
 		if (cabinet2Clicked) {
 			text("...Bowls and plates in here.", 25, 25);
-			textSize(20,20);
+			textSize(20);
 			fill(0);
 		}
-
-
-
 
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
 			gameState = 5; // Switch to bedroom
 			player.resetPosition(); // Reset player position when transitioning
 		  }
-
+		
 	}else if (gameState === 5){
 	
 		//bedroom
@@ -549,8 +548,8 @@ function draw() {
 
 		if (roomlampClicked) {
 
-			if (bedroom2offImage) {
-				image(bedroom2offImage, 0, 0, canvasWidth, canvasHeight);
+			if (bedroom1offImage) {
+				image(bedroom1offImage, 0, 0, canvasWidth, canvasHeight);
 			}
 		}
 		if (tvClicked) {
@@ -566,37 +565,62 @@ function draw() {
 			}
 		}
 		if (vhsrow1Clicked) {
-			rect(107,529, 70,40);
+			text("VHS tapes of Hercules, Lilo & Stitch, and Snow White...", 30, 45);
+			textSize(20);
+			fill(0);
 		}
 
 		if (vhsrow2Clicked) {
-			rect(167,529, 70,40);
+			text("VHS tapes of Tarzan, Anastasia, and Mulan...", 30, 45);
+			textSize(20);
+			fill(0);
 		}
 
 		if (vhsrow3Clicked) {
-			rect(231,528, 70,40);
+			text("VHS tapes of Casper, Nightmare Before Christmas, and Scooby-Doo...", 30, 45);
+			textSize(20);
+			fill(0);
 		}
 
 		if (radioClicked) {
-			rect(425,534, 70,40);
+			text("My old radio player! I definitely did not take care of my music dvds...", 30, 45);
+			textSize(20);
+			fill(0);
 		}
 		if (bookrow1Clicked) {
-			rect(309,466, 70,40);
+			text("Shel Silversteins A Light in the Attic, The Giving Tree,", 30, 45);
+			text("and Falling up...", 30, 85);
+			textSize(20);
+			fill(0);
 		}
 
 		if (bookrow2Clicked) {
-			rect(410,478, 70,40);
+			text("Hi Fly Guy, Frog and Toad, and Fancy Nancy...", 30, 45);
+			textSize(20);
+			fill(0)
 		}
 
-
-
-
+		
+		if (player.sprite.x > 600){
+		roomlampClicked = false;
+ 		tvClicked = false;
+ 		dsClicked = false;
+ 		vhsrow1Clicked = false;
+ 		vhsrow2Clicked = false;
+ 		vhsrow3Clicked = false;
+ 		radioClicked = false;
+ 		bookrow1Clicked = false;
+ 		bookrow2Clicked = false;
+		text("All my old books, and movies, and things are still here after all....", 20, 45);
+		textSize(20);
+		fill(0);
+		}
 
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
 			gameState = 6; // Switch to bedroom part 2
 			player.resetPosition(); // Reset player position when transitioning
 		  }
-
+		
 	}else if (gameState === 6){
 	
 		//bedroom part 2
@@ -604,18 +628,33 @@ function draw() {
 		player.update();
 
 		if (posterClicked) {
-			rect(238,119, 70,40);
+			text("My obssession with peace signs was... interesting,", 30, 45);
+			text("that's how I ended up with this.", 30, 85);
+			textSize(20);
+			fill(0)
 		}
 		if (pillowClicked) {
-			rect(432,373, 70,40);
+			text("The same ol stuff, as I left it....", 20, 45);
+			textSize(20);
+			fill(0);
 		}
+		if (player.sprite.x > 500){
+
+			posterClicked = false;
+			pillowClicked = false;
+
+			text("I didn't realize that I forgot how my childhood life was like....", 20, 45);
+			text("It was nice to see all my old things again....", 20, 65);
+			textSize(20);
+			fill(0);
 
 
 		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
 			gameState = 7; // Switch to ending
 			player.resetPosition(); // Reset player position when transitioning
 		 }
-
+		}
+		
 	}else if (gameState === 7){
 		
 		
@@ -624,18 +663,21 @@ function draw() {
 		cloudsObj.draw();
 		player.update();
 		
-
-
-		if (player.sprite.x > 795){
-			
-			text("THE END", 400, 270);
-			textSize(30,30);
+		fill(0); // Ensure text is visible
+		textSize(20); // Default text size for all text
+		
+		if (player.sprite.x > 795) {
+		  textSize(50);
+		  text("THE END", 100, 185);
+		} else if (player.sprite.x > 650) {
+		  text("Life was so different back then, I didn't realize how much I missed it....", 45, 170);
+		} else if (player.sprite.x > 500) {
+		  text("I guess I'll try calling again, and let them know I stopped by....", 45, 170);
+		} else if (player.sprite.x > 200) {
+		  text("I came to surprise Mom and Dad, It's been so long since I went off to college....", 45, 170);
 		}
-		  }
-
-	
 	}
-
+}
 
 function drawHouse(){
 
@@ -743,9 +785,9 @@ class Player {
 
 		//moving 
 		if (kb.pressing('left')) {
-			this.sprite.vel.x = -5;
+			this.sprite.vel.x = -3;
 		} else if (kb.pressing('right')) {
-			this.sprite.vel.x = 5;
+			this.sprite.vel.x = 3;
 		} else {
 			this.sprite.vel.x = 0;
 		}
