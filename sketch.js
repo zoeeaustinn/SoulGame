@@ -9,6 +9,7 @@ let floorImage;
 let backgroundImage;
 let cloudsImage;
 let fronthouseImage;
+let carImage;
 let livingroomImage;
 let windowClicked = false; // rob
 let lampClicked = false;
@@ -93,6 +94,7 @@ function preload() {
 	backgroundImage = loadImage('img/background.png')
 	cloudsImage = loadImage('img/clouds.png')
 	fronthouseImage = loadImage('img/fronthouse.png')
+	carImage = loadImage('img/car.png')
 	livingroomImage = loadImage('img/livingroom.png')
 	livingroom2Image = loadImage('img/livingroom2.png')
 	livingroom1offImage = loadImage('img/livingroom1off.png')
@@ -140,7 +142,7 @@ function setup() {
 
 
 
-	player = new Player(50, 0, 50);
+	player = new Player(50, 360, 50);
 	floor = new Floor(canvasWidth / 2, canvasHeight - 10, canvasWidth, 50);
 
 	backgroundObj = new GenericObjects({
@@ -181,11 +183,24 @@ function draw() {
 		floor.update();
 		cloudsObj.draw();
 		drawHouse();
-
+		image(carImage, -150, 330, 400, 300);
+		text("Use key arrows to move left or right,", 15, 25);
+		text("and the mouse to click on objects to explore more.", 15, 55);
+		textSize(20,20);
+		fill(0);
+	
 		// rob
 		if (windowClicked) {
 			rect(691,209, 70,40);
 		}
+		if (player.sprite.x > 150){
+			text("Hello? hello? nobody is picking up....", 20, 200);
+			textSize(20, 20);
+		} if (player.sprite.x > 550){
+			text("I guess no one is home right now.", 20, 220);
+			textSize(20, 20);
+		}
+
 
 		if (player.sprite.x + player.sprite.diameter / 2 >= houseDoorX - doorWidth) {
 			gameState = 1; // Switch to Living Room state
@@ -200,7 +215,9 @@ function draw() {
 		
 
 		if (drawerClicked) {
-			rect(391,437, 10,10);
+			text("Just a drawer, with some pens, and some stitching needles...", 25, 60);
+			textSize(20,20);
+			fill(255);
 		
 		}else if (lampClicked && umbrellaClicked) {
 			// if both umbrella and lamp are clicked it shows lampoff & umbrella shifted
@@ -211,28 +228,47 @@ function draw() {
 			// if floral picture is clicked, it highlights
 			if (floralImage) {
 				image(floralImage, 0, 0, canvasWidth, canvasHeight);
+				text("Sunflower and roses are mom's favorite...", 25, 60);
+				textSize(20,20);
+				fill(255);
 			}
 
 		} else if (selfieClicked) {
 			// if selfie picture is clicked, it highlights
 			if (selfieImage) {
 				image(selfieImage, 0, 0, canvasWidth, canvasHeight);
+				text("I remember this, me and mom took a girl's day.", 20, 65);
+				text("she even picked me up early from school.", 20, 85);
+				textSize(20,20);
+				fill(255);
 			}
 		} else if (babyClicked) {
 			// if baby picture is clicked, it highlights
 			if (babyImage) {
 				image(babyImage, 0, 0, canvasWidth, canvasHeight);
+				text("Awe, I remember that photo. That was my first time swimming.", 25, 60);
+				textSize(20,20);
+				fill(255);
+				
 			}
 
 		} else if (beachClicked) {
 			// if beach picture is clicked, it highlights
 			if (beachImage) {
 				image(beachImage, 0, 0, canvasWidth, canvasHeight);
+				text("The first time at the beach was so much fun, ", 30, 65);
+				text("I remember we spent hours collecting seashells.", 30, 85);
+				textSize(20,20);
+				fill(255);
 			}
 		} else if (balletClicked) {
 			// if ballet picture is clicked, it highlights
 			if (balletImage) {
 				image(balletImage, 0, 0, canvasWidth, canvasHeight);
+				text("My first ballet solo...I remember being nervous,", 30, 66);
+				text("but mom and dad were so proud.", 30, 85);
+				textSize(20,20);
+				fill(255);
 			}
 		} else if (lampClicked) {
 			// if lamp is clicked, lights will turn off
@@ -283,67 +319,105 @@ function draw() {
         
             if (button2Image) {
                 image(button2Image, 0, 0, canvasWidth, canvasHeight);
+				text("I remember coming to the living room, when I didn't feel good", 30, 25);
+				text("or couldn't sleep, and this show was always on in the mornings.", 30, 45);
+				textSize(20,20);
+				fill(255);
             }
 		}
 		if (button3Clicked) {
         
             if (button3Image) {
                 image(button3Image, 0, 0, canvasWidth, canvasHeight);
+				text("Awee my favorite cartoon...The Flintstones", 30, 25);
+				textSize(20,20);
+				fill(255);
+				
             }
 		}
 		if (button4Clicked) {
         
             if (button4Image) {
                 image(button4Image, 0, 0, canvasWidth, canvasHeight);
+				text("This is what I watched Spongebob on alot too...", 30, 25);
+				textSize(20,20);
+				fill(255);
+				
             }
 		}
 
 		if (vhs1Clicked) {
-			rect(255,469, 70,40);
+			text("vhs tape of The Little Mermaid...", 30, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (vhs5Clicked) {
-			rect(297,504, 70,40);
+			text("a vhs tape of the movie Shrek.... ", 30, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (vhs11Clicked) {
-			rect(344,473, 70,40);
+			text("vhs tape of the movie Cars...", 30, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (pearlplantClicked) {
-			rect(547,328, 70,40);
+			text("Mom always tends to her plants, like they are her children too.",30, 25);
+			textSize(20,20);
+			fill(255);
+				
 		}
 
 		if (book1Clicked) {
-			rect(545,260, 70,40);
+			text("The Help...The Bible...Crossword puzzles....", 30, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (book2Clicked) {
-			rect(611,251, 70,40);
+			text("books", 25, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (book3Clicked) {
-			rect(693,256, 70,40);
+			text("The Shining,word search, and some random magazines...", 30, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (ball8Clicked) {
-			rect(664,341, 70,40);
+			text("My favorite 8 ball! I was obssessed with letting,", 30, 25);
+			text("this make decisions for me", 30, 45);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (board1Clicked) {
-			rect(544,450, 70,40);
+			text("Baby albums, and school photos...", 25, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (board2Clicked) {
-			rect(631,454, 70,40);
+			text("Monopoly....Scrabble...", 25, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 		if (NESClicked) {
-			rect(260,527, 70,40);
-		}
+			text("Mom kept her NES, and all her games. My favorite game was Dr. Mario,", 25, 25);
+			text("we use to play that all night... ", 25, 45);
+			textSize(20,20);
+			fill(255);		}
 
 		if (vidgameClicked) {
-			rect(336,523, 70,40);
+			text("Dvds of Polar Express...Monsters Inc...The Chronicles of Narnia...", 25, 25);
+			textSize(20,20);
+			fill(255);
 		}
 
 
@@ -372,23 +446,33 @@ function draw() {
 		}
 
 		if (rainbowClicked) {
-			rect(673,348, 70,40);
+			text("This was the rainbow I drew for dad on St. Patricks day, I thought it was good luck.", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (stickfigureClicked) {
-			rect(604,382, 70,40);
+			text("This was my best drawing of Grampa...", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (flowerdrawClicked) {
-			rect(634,445, 70,40);
+			text("I gave this drawing to Mom, and she has always kept it,", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (paintingonwallClicked) {
-			rect(61,85, 70,40);
+			text("...I don't know where this painting is from.", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 		if (todoClicked) {
-			rect(692,486, 70,40);
+			text("Groceries List...milk,cheese,noodles,cream,juice...", 25, 25);
+			textSize(20,20);
+			fill(0);
 		}
 
 
@@ -525,21 +609,24 @@ function draw() {
 		 }
 
 	}else if (gameState === 7){
+		
+		
+		backgroundObj.draw();
 		displayEnding();
+		cloudsObj.draw();
 		player.update();
 		
 
 
-		if (player.sprite.x + player.sprite.diameter / 2 >= canvasWidth) {
-			gameState = 2; // Switch to Living Room part 2
-			player.resetPosition(); // Reset player position when transitioning
-		
-		  }
+		if (player.sprite.x > 795){
+			
+			text("THE END", 400, 270);
+			textSize(30,30);
 		}
+		  }
 
 	
 	}
-
 
 
 function drawHouse(){
@@ -661,7 +748,6 @@ class Player {
             this.sprite.vel.x = 0;
 		}
 
-		
 
 		if (this.sprite.y + this.sprite.diameter / 2 >= floor.y) {
 			this.sprite.y = floor.y - this.sprite.diameter / 2; // Ensure player stays above floor
