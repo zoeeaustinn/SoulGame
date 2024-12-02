@@ -126,7 +126,10 @@ function preload() {
 	bedroom1offImage = loadImage ('img/bedroom1off.png');
 	bedroom2offImage = loadImage ('img/bedroom2off.png');
 	endingImage = loadImage('img/ending.png');
-	SpriteImage = loadImage('img/SpriteImage.png');
+	spriteImage = loadImage('img/SpriteImage.png');
+	//spriteImage.resize(100, 150);
+	() => console.log('image loaded');
+	() => console.log('failed to load image');
 	
 }
 
@@ -143,7 +146,7 @@ function setup() {
 
 
 
-	player = new Player(50, 360, 50);
+	player = new Player(50, 450, 90, 90);
 	floor = new Floor(canvasWidth / 2, canvasHeight - 10, canvasWidth, 50);
 
 	backgroundObj = new GenericObjects({
@@ -186,7 +189,7 @@ function draw() {
 		drawHouse();
 		image(carImage, -150, 330, 400, 300);
 		text("Use key arrows to move left or right,and the mouse to click on objects to explore more.", 15, 25);
-		text("Some things are interactive, others are not", 15, 55);
+		text("Some things are interactive, others are not.", 15, 55);
 		textSize(20);
 		fill(0);
 	
@@ -773,10 +776,15 @@ function displayEnding(){
 
 
 class Player {
-	constructor(x, y, size) {
+	constructor(x, y, w, h) {
 
-		this.sprite = new Sprite(x, y, size, size);
-		this.sprite.diameter = size;
+		this.sprite = new Sprite(x, y, w, h);
+		//this.sprite.diameter = size;
+		this.sprite.image = spriteImage;
+		//this.sprite.width = 800;
+		//this.sprite.height = 800;
+		
+	
 		//this.sprite.color = 'blue';
 		this.positionReset = false;
 	}
@@ -799,8 +807,8 @@ class Player {
 		}
 
 
-		if (this.sprite.y + this.sprite.diameter / 2 >= floor.y) {
-			this.sprite.y = floor.y - this.sprite.diameter / 2; // Ensure player stays above floor
+		if (this.sprite.y + this.sprite.h / 2 >= floor.y) {
+			this.sprite.y = floor.y - this.sprite.h / 2; // Ensure player stays above floor
 			this.sprite.vel.y = 0; // Stop downward velocity when touching floor
 		} else {
 			this.sprite.y += world.gravity.y; // Apply gravity
