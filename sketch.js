@@ -126,8 +126,8 @@ function preload() {
 	bedroom1offImage = loadImage ('img/bedroom1off.png');
 	bedroom2offImage = loadImage ('img/bedroom2off.png');
 	endingImage = loadImage('img/ending.png');
-	movingrightImage = loadImage('img/movingright.png');
-	movingleftImage = loadImage('img/movingleft.png');
+	SpriteImage = loadImage('img/SpriteImage.png');
+	
 }
 
 
@@ -185,8 +185,8 @@ function draw() {
 		cloudsObj.draw();
 		drawHouse();
 		image(carImage, -150, 330, 400, 300);
-		text("Use key arrows to move left or right,", 15, 25);
-		text("and the mouse to click on objects to explore more.", 15, 55);
+		text("Use key arrows to move left or right,and the mouse to click on objects to explore more.", 15, 25);
+		text("Some things are interactive, others are not", 15, 55);
 		textSize(20);
 		fill(0);
 	
@@ -195,7 +195,7 @@ function draw() {
 			rect(691,209, 70,40);
 		}
 		if (player.sprite.x > 150){
-			text("Hello? hello? nobody is picking up....", 20, 200);
+			text("Hello? hellooooo? nobody is picking up....", 20, 200);
 			textSize(20);
 		} if (player.sprite.x > 550){
 			text("I guess no one is home right now.", 20, 220);
@@ -777,7 +777,7 @@ class Player {
 
 		this.sprite = new Sprite(x, y, size, size);
 		this.sprite.diameter = size;
-		this.sprite.color = 'blue';
+		//this.sprite.color = 'blue';
 		this.positionReset = false;
 	}
 
